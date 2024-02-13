@@ -1,16 +1,17 @@
 import { LowSync } from 'lowdb'
 import { JSONFileSync } from 'lowdb/node'
 import Configjson from '../../../Config.json' assert { type: 'json' };
-import fileNameJson from '../fileName.json' assert { type: 'json' };
+import tableNameJson from '../../tableName.json' assert { type: 'json' };
 
 let StartFunc = ({ LocalBodyAsModal }) => {
     let LocalinDataToInsert = LocalBodyAsModal;
+    let LocaltableName = tableNameJson.tableName;
 
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
 
     LocalReturnData.KTF = false;
 
-    LocalReturnData.UserDataFilePath = `${Configjson.JsonPath}/${fileNameJson.fileName}`;
+    LocalReturnData.UserDataFilePath = `${Configjson.JsonPath}/${LocaltableName}`;
 
     const defaultData = { error: "From KLowDb" }
 

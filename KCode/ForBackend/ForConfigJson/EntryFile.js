@@ -12,6 +12,7 @@ let StartFunc = async ({ inTablesCollection, inFrom, inTo }) => {
     if (ConfigJson.isSequelize) {
         LocalfileNameJsonData.sequelizeConfig.tableAndColumns = inTablesCollection;
         LocalfileNameJsonData.sequelizeConfig.DataPk = ConfigJson.ToDataDetails.DataPk;
+        LocalfileNameJsonData.sequelizeConfig.DbName = ConfigJson.ToDataDetails.DbName;
     };
 
     LocalfileNameJsonData.jsonConfig.tableAndColumns = inTablesCollection;

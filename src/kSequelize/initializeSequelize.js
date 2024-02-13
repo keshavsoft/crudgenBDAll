@@ -5,6 +5,7 @@ import Configjson from '../Config.json' assert { type: 'json' };
 
 let CommonsequelizeConfig = Configjson.sequelizeConfig;
 let commonJonPth = Configjson.sequelizeConfig.DataPath;
+let commonDataPk = Configjson.sequelizeConfig.DataPk;
 let commonDbName = Configjson.sequelizeConfig.DbName;
 
 let StartFunc = async () => {
@@ -31,7 +32,7 @@ let StartFunc = async () => {
         sequelize = new Sequelize({
             dialect: 'sqlite',
             logging: false,
-            storage: `${commonJonPth}/${commonDbName}` // You can specify the path for your SQLite database file
+            storage: `${commonJonPth}/${commonDataPk}/${commonDbName}` // You can specify the path for your SQLite database file
         });
     } catch (error) {
         return await { KTF: false, KReason: error, ErrorFrom: process.cwd() };

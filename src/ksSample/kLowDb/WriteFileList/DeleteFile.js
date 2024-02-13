@@ -1,11 +1,13 @@
 import { LowSync } from "lowdb";
 import { JSONFileSync } from "lowdb/node";
 import Configjson from "../../../Config.json" assert { type: "json" };
-import fileNameJson from "../fileName.json" assert { type: "json" };
+import tableNameJson from '../../tableName.json' assert { type: 'json' };
 
 let StartFunc = async ({ inId }) => {
   let LocalId = inId;
-  let UserDataFilePath = `${Configjson.JsonPath}/${fileNameJson.fileName}`;
+  let LocaltableName = tableNameJson.tableName;
+
+  let UserDataFilePath = `${Configjson.JsonPath}/${LocaltableName}`;
   const defaultData = { error: "From KLowDb" };
 
   const db = new LowSync(new JSONFileSync(UserDataFilePath), defaultData);

@@ -1,7 +1,9 @@
 import { StartFunc as StartFuncForRoutesFile } from './ForRoutesFile/EntryFile.js';
 import { StartFunc as StartFuncForConfigJson } from './ForConfigJson/EntryFile.js';
 import { StartFunc as StartFuncForRestClients } from './ForRestClients/EntryFile.js';
-import { StartFunc as StartFuncForkLowDb } from './ForkLowDb/EntryFile.js';
+import { StartFunc as StartFuncForTableName } from './ForTableName/EntryFile.js';
+import { StartFunc as StartFuncForkSequelize } from './ForkSequelize/EntryFile.js';
+
 import fs from "fs-extra";
 
 let StartFunc = ({ inTablesCollection, inFrom, inTo }) => {
@@ -16,7 +18,8 @@ let StartFunc = ({ inTablesCollection, inFrom, inTo }) => {
     StartFuncForRoutesFile({ inTablesCollection, inFrom, inTo });
     StartFuncForConfigJson({ inTablesCollection, inFrom, inTo })
     StartFuncForRestClients({ inTablesCollection, inFrom, inTo });
-    StartFuncForkLowDb({ inTablesCollection, inTo });
+    StartFuncForTableName({ inTablesCollection, inTo });
+    StartFuncForkSequelize({ inFrom, inTo });
 };
 
 let LocalFuncCreateFolders = ({ inTo }) => {

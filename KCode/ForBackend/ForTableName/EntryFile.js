@@ -22,18 +22,18 @@ let StartFunc = ({ inElement, inTablesCollection, inFrom, inTo }) => {
 };
 
 let LocalFuncForreadFile = ({ inFilesArray, inFrom, inTo, inTypeName, inSampleString }) => {
-    let LocalFileName = "fileName.json";
+    let LocalFileName = "tableName.json";
     let LocalFilesArray = inFilesArray;
     let LocalTypeName = inTypeName;
     let LocalTo = inTo;
 
     LocalFilesArray.forEach(LoopFile => {
         let LoopInsideFileName = path.parse(LoopFile.name).name;
-        let LocalFilePath = `${LocalTo}/${LoopInsideFileName}/${LocalTypeName}/${LocalFileName}`;
+        let LocalFilePath = `${LocalTo}/${LoopInsideFileName}/${LocalFileName}`;
 
         let LocalFileData = fs.readFileSync(LocalFilePath);
         let LocalfileNameJsonData = JSON.parse(LocalFileData);
-        LocalfileNameJsonData.fileName = LoopFile.name;
+        LocalfileNameJsonData.tableName = LoopFile.name;
 
         fs.writeFileSync(LocalFilePath, JSON.stringify(LocalfileNameJsonData));
     });

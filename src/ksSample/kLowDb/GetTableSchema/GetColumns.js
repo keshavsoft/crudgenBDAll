@@ -1,9 +1,9 @@
 import Configjson from '../../../Config.json' assert { type: 'json' };
-import fileNameJson from '../fileName.json' assert { type: 'json' };
+import tableNameJson from '../../tableName.json' assert { type: 'json' };
 
 let StartFunc = () => {
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
-    let LocalFileName = fileNameJson.fileName;
+    let LocaltableName = tableNameJson.tableName;
 
     LocalReturnData.KTF = false;
     let LocalTableColumns = Configjson.jsonConfig.tableAndColumns;
@@ -13,7 +13,7 @@ let StartFunc = () => {
     };
 
     let LocalFindColumns = LocalTableColumns.children.find(element => {
-        return element.name === LocalFileName;
+        return element.name === LocaltableName;
     });
 
     return LocalFindColumns.fileData;
