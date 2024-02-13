@@ -28,13 +28,13 @@ This project focuses on automating CRUD operations for JSON files, making it eas
 2. Clone the repository
    ```
    
-   git clone https://github.com/keshavsoft/crudGenByPath.git
+   git clone https://github.com/keshavsoft/crudgenBDAll
    
    ```
-3. Change Directory to crudGenByPath or Open the cloned folder, navigate to crudGenByPath, and open the command prompt.
+3. Change Directory to crudGenByPath or Open the cloned folder, navigate to crudgenBDAll, and open the command prompt.
    ```
    
-    cd crudGenByPath
+    cd crudgenBDAll
    
    ```
 4. Run the batch file (For Windows)
