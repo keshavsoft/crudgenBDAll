@@ -9,6 +9,11 @@ let StartFunc = async ({ inTablesCollection, inFrom, inTo }) => {
     let LocalFileData = fs.readFileSync(`${LocalFrom}/${LocalFileName}`);
     let LocalfileNameJsonData = JSON.parse(LocalFileData);
 
+    if (ConfigJson.isSequelize) {
+        LocalfileNameJsonData.sequelizeConfig.tableAndColumns = inTablesCollection;
+        LocalfileNameJsonData.sequelizeConfig.DataPk = ConfigJson.ToDataDetails.DataPk;
+    };
+
     LocalfileNameJsonData.jsonConfig.tableAndColumns = inTablesCollection;
     LocalfileNameJsonData.jsonConfig.DataPk = ConfigJson.ToDataDetails.DataPk;
 

@@ -1,23 +1,21 @@
 import { Sequelize, DataTypes } from "sequelize";
-import fs from "fs";
+import path from "path";
+import ConfigJson from '../../../Config.json' assert {type: 'json'};
 
-let StartFunc = async ({ inColumnsJson, inFrom }) => {
-    let LocalColumnsJson = inColumnsJson;
+let StartFunc = async ({ inFilesArray }) => {
+    let LocalFilesArray = inFilesArray;
 
-    let LocalFileName = "Config.json";
-    let LocalFrom = inFrom;
-
-    let LocalFileData = fs.readFileSync(`${LocalFrom}/${LocalFileName}`);
-    let LocalfileNameJsonData = JSON.parse(LocalFileData);
-    let LocalDataPk = LocalfileNameJsonData.ToDataDetails.DataPk;
+    let LocalFirstLevelFolders = LocalFilesArray.children.filter(element => {
+        return "children" in element === false;
+    });
 
     const sequelize = new Sequelize({
         dialect: 'sqlite',
-        storage: `${LocalfileNameJsonData.ToDataDetails.DataPath}/${LocalDataPk}/${LocalfileNameJsonData.ToDataDetails.DbName}` // You can specify the path for your SQLite database file
+        storage: `${ConfigJson.ToDataDetails.DataPath}/${ConfigJson.ToDataDetails.DataPk}/${ConfigJson.ToDataDetails.DbName}` // You can specify the path for your SQLite database file
     });
 
-    LocalColumnsJson.forEach(element => {
-        Object.entries(element.tableColumns).forEach(
+    LocalFirstLevelFolders.forEach(element => {
+        Object.entries(element.fileData).forEach(
             ([key, value]) => {
                 if (value.type === "STRING") {
                     value.type = DataTypes.STRING;
@@ -29,7 +27,7 @@ let StartFunc = async ({ inColumnsJson, inFrom }) => {
             }
         );
 
-        sequelize.define(element.tableName, element.tableColumns, { freezeTableName: true });
+        sequelize.define(path.parse(element.name).name, element.fileData, { freezeTableName: true });
     });
 
     sequelize.sync({ force: true });

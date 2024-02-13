@@ -1,9 +1,19 @@
 import { StartFunc as StartFuncForFlatJson } from "./ForFlatJson/EntryFile.js";
+import { StartFunc as StartFuncForSequelize } from "./sqlite/ForSequelize/EntryFile.js";
 import ConfigJson from '../Config.json' assert {type: 'json'};
 import fs from "fs";
 
 let StartFunc = ({ inFilesArray, inFrom }) => {
     LocalFuncCreateFolder();
+
+    if (ConfigJson.isSequelize) {
+        StartFuncForSequelize({
+            inFilesArray,
+            inFrom
+        });
+
+        return;
+    };
 
     StartFuncForFlatJson({
         inTablesCollection: inFilesArray,

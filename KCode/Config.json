@@ -2,6 +2,7 @@
     "isSequelize": true,
     "ToDataDetails": {
         "DataPk": 316,
-        "DataPath": "KData/JSON"
+        "DataPath": "KData/JSON",
+        "DbName": "data.db"
     }
 }
