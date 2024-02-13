@@ -1,24 +1,27 @@
 import fs from 'fs';
 import path from 'path';
 
-let StartFunc = ({ inTablesCollection, inTo }) => {
+let StartFunc = ({ inElement, inTablesCollection, inFrom, inTo }) => {
+    let LocalElement = inElement;
     let LocalTypeName = "kLowDb";
+    let LocalFrom = inFrom;
     let LocalTo = inTo;
     let LocalSampleString = "ksSample";
 
     let LocalTablesCollection = inTablesCollection;
 
     let LocalFirstLevelFolders = LocalTablesCollection.children.filter(element => {
-        return "children" in element
+        return "children" in element === false;
     });
 
     LocalFuncForreadFile({
         inFilesArray: LocalFirstLevelFolders,
-        inTo: LocalTo, inTypeName: LocalTypeName, inSampleString: LocalSampleString
+        inTo: LocalTo, inFrom: LocalFrom, inTypeName: LocalTypeName, inSampleString: LocalSampleString
     });
+
 };
 
-let LocalFuncForreadFile = ({ inFilesArray, inTo, inTypeName, inSampleString }) => {
+let LocalFuncForreadFile = ({ inFilesArray, inFrom, inTo, inTypeName, inSampleString }) => {
     let LocalFileName = "fileName.json";
     let LocalFilesArray = inFilesArray;
     let LocalTypeName = inTypeName;

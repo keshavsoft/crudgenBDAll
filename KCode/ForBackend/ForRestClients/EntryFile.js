@@ -8,7 +8,7 @@ let StartFunc = ({ inTablesCollection, inTo, inFrom }) => {
     let LocalTablesCollection = inTablesCollection;
 
     let LocalFirstLevelFolders = LocalTablesCollection.children.filter(element => {
-        return "children" in element
+        return "children" in element === false;
     });
 
     StartFuncCommonFuncs({
