@@ -1,4 +1,5 @@
 {
+    "isSequelize": true,
     "jsonConfig": {
         "DataPk": 316,
         "DataPath": "KData/JSON",
@@ -27,5 +28,10 @@
                 }
             ]
         }
+    },
+    "sequelizeConfig": {
+        "isMysql": false,
+        "DataPath": "KData/JSON",
+        "DbName": "sample.db"
     }
 }
