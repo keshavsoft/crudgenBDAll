@@ -104,3 +104,7 @@ table name : Users, is needed for user management
 13Feb2023 
 
 ready with only flat json 
+
+if want to run the repo without npm 
+
+BoilerPlate.bat -npm
