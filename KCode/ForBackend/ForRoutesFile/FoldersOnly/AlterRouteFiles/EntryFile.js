@@ -14,20 +14,21 @@ let StartFunc = ({ inTablesCollection, inTo }) => {
         return "children" in element
     });
 
-    LocalFirstLevelFolders.forEach(LoopFirst => {
-        let LocalSecondLevelFiles = LoopFirst.children.filter(element => {
-            return "children" in element === false;
-        });
+    let LocalFileData = fs.readFileSync(`${LocalTo}/${LocalFileName}`);
+    let LocalFromForImports;
+    let LocalFromForRouterUse;
 
-        let LocalFileData = fs.readFileSync(`${LocalTo}/${LoopFirst.name}/${LocalFileName}`);
-        let LocalFromForImports;
-        let LocalFromForRouterUse;
-        
-        LocalFromForImports = StartFuncForImports({ inTablesCollection: LocalSecondLevelFiles, inFileData: LocalFileData.toString() });
-        LocalFromForRouterUse = StartFuncForRouterUse({ inTablesCollection: LocalSecondLevelFiles, inFileData: LocalFromForImports });
-
-        fs.writeFileSync(`${LocalTo}/${LoopFirst.name}/${LocalFileName}`, LocalFromForRouterUse);
+    LocalFromForImports = StartFuncForImports({
+        inTablesCollection: LocalFirstLevelFolders,
+        inFileData: LocalFileData.toString()
     });
+
+    LocalFromForRouterUse = StartFuncForRouterUse({
+        inTablesCollection: LocalFirstLevelFolders,
+        inFileData: LocalFromForImports
+    });
+
+    fs.writeFileSync(`${LocalTo}/${LocalFileName}`, LocalFromForRouterUse);
 };
 
 export { StartFunc };

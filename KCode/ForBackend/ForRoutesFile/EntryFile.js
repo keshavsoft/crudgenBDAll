@@ -8,13 +8,7 @@ let StartFunc = ({ inTablesCollection, inFrom, inTo }) => {
     let LocalTablesCollection = inTablesCollection;
 
     let LocalFirstLevelFolders = LocalTablesCollection.children.filter(element => {
-        return "children" in element
-    });
-
-    StartFuncFoldersOnly({
-        inTablesCollection: LocalTablesCollection,
-        inFrom,
-        inTo
+        return "children" in element === false;
     });
 
     let LocalFileName = "routes.js";
@@ -27,6 +21,12 @@ let StartFunc = ({ inTablesCollection, inFrom, inTo }) => {
     let LocalFromForRouterUse = StartFuncForRouterUse({ inEndPointsArray: LocalFirstLevelFolders, inFileData: LocalFromForImports });
 
     fs.writeFileSync(`${LocalTo}/${LocalFileName}`, LocalFromForRouterUse);
+
+    StartFuncFoldersOnly({
+        inTablesCollection: LocalTablesCollection,
+        inFrom,
+        inTo
+    });
 };
 
 export { StartFunc };

@@ -1,9 +1,11 @@
+import path from "path";
+
 let StartFunc = ({ inEndPointsArray, inFileData }) => {
     let LocalEndPointsArray = inEndPointsArray;
 
     let LocalFileData = inFileData;
 
-    let LocalToSearch = "router.use('/kSampleFolder', routerFromkSampleFolder);";
+    let LocalToSearch = "router.use('/ksSample', routerFromksSample);";
 
     let FromLocalForEndPoints = LocalForEndPoints({ inEndPointsArray: LocalEndPointsArray, inToSearch: LocalToSearch });
     let LocalNewData = LocalFileData.replaceAll(LocalToSearch, FromLocalForEndPoints);
@@ -17,7 +19,7 @@ let LocalForEndPoints = ({ inEndPointsArray, inToSearch }) => {
     let LocalToSearch = inToSearch;
 
     let LocalNewArray = LocalEndPointsArray.map(element => {
-        return LocalToSearch.replaceAll("kSampleFolder", element.name);
+        return LocalToSearch.replaceAll("ksSample", path.parse(element.name).name);
     });
 
     return LocalNewArray.join("\r\n");

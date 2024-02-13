@@ -11,15 +11,15 @@ let StartFunc = ({ inTablesCollection, inFrom, inTo }) => {
         return;
     };
 
-    LocalFuncCopyFolder({ inFrom, inTo });
+    LocalFuncCreateFolders({ inTo });
 
     StartFuncForRoutesFile({ inTablesCollection, inFrom, inTo });
     StartFuncForConfigJson({ inTablesCollection, inFrom, inTo })
     StartFuncForRestClients({ inTablesCollection, inFrom, inTo });
-    StartFuncForkLowDb({ inTablesCollection, inFrom, inTo });
+    StartFuncForkLowDb({ inTablesCollection, inTo });
 };
 
-let LocalFuncCopyFolder = ({ inFrom, inTo }) => {
+let LocalFuncCreateFolders = ({ inTo }) => {
     let LocalTo = inTo;
 
     if (fs.existsSync(LocalTo) === false) {
