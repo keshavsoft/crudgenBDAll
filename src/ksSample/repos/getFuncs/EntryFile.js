@@ -6,11 +6,21 @@ import {
     GetIdFunc as GetIdFuncDal, GetBodyCheckFunc as GetBodyCheckFuncDal
 } from '../../dals/getFuncs/EntryFile.js';
 
+import {
+    GetDataOnlyFunc as GetDataOnlyFuncDalsForSequelize,
+} from '../../dalsForSequelize/getFuncs/EntryFile.js';
+
+import ConfigJson from '../../../Config.json' assert {type: 'json'};
+
 let GetFunc = async () => {
     return GetFuncDal();
 };
 
 let GetDataOnlyFunc = async () => {
+    if (ConfigJson.isSequelize) {
+        return GetDataOnlyFuncDalsForSequelize();
+    };
+
     return GetDataOnlyFuncDal();
 };
 
@@ -41,5 +51,5 @@ let GetRowCountFunc = async () => {
 export {
     GetFunc, GetDataOnlyFunc, GetFromModalFunc,
     GetFromModalUuidFunc, GetFromModalUuidAndTSFunc,
-    GetIdFunc, GetBodyCheckFunc,GetRowCountFunc
+    GetIdFunc, GetBodyCheckFunc, GetRowCountFunc
 };

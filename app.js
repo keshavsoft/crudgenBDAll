@@ -1,5 +1,5 @@
 import { router as routerFromSrc } from "./src/routes.js";
-import { router as routerFromBin } from "./bin/routes.js";
+// import { router as routerFromBin } from "./bin/routes.js";
 
 import { StartFunc as StartFuncKWSServer } from "./Projects/KWSServer/EntryFile.js";
 import { StartFunc as StartFuncPortListen } from "./PortListen.js";
@@ -43,7 +43,7 @@ app.get('/AboutUs', (req, res) => {
 });
 
 app.use('/src', routerFromSrc);
-app.use('/bin', routerFromBin);
+// app.use('/bin', routerFromBin);
 
 StartFuncKWSServer(server);
 
