@@ -1,35 +1,40 @@
 import { LowSync } from 'lowdb'
 import { JSONFileSync } from 'lowdb/node'
-import Configjson from '../../../../Config.json' assert { type: 'json' };
+import Configjson from '../../../Config.json' assert { type: 'json' };
 import fileNameJson from '../fileName.json' assert { type: 'json' };
 
-let StartFunc = ({ inDataToInsert }) => {
-    let LocalinDataToInsert = inDataToInsert;
+let StartFunc = ({ LocalBodyAsModal }) => {
+    let LocalinDataToInsert = LocalBodyAsModal;
+
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
 
     LocalReturnData.KTF = false;
 
-    // LocalReturnData.UserDataFilePath = `${Configjson.JsonPath}/${fileNameJson.fileName}`;
-    LocalReturnData.UserDataFilePath = `${Configjson.jsonConfig.DataPath}/${Configjson.jsonConfig.DataPk}/${fileNameJson.folderName}/${fileNameJson.fileName}`;
+    LocalReturnData.UserDataFilePath = `${Configjson.JsonPath}/${fileNameJson.fileName}`;
 
     const defaultData = { error: "From KLowDb" }
 
     const db = new LowSync(new JSONFileSync(LocalReturnData.UserDataFilePath), defaultData);
     db.read();
-    let LocalDataWithUuid = LocalFunc({ inDataToInsert: LocalinDataToInsert });
 
-    if (Array.isArray(db.data) === false) {
-        LocalReturnData.KReason = "Not array inside Json file...";
+    let LocalArrayAfterUuid = LocalFuncForArray({ inDataToInsert: LocalinDataToInsert });
 
-        return LocalReturnData;
-    };
+    db.data.push(...LocalArrayAfterUuid);
+    db.write();
 
-    db.data.push(LocalDataWithUuid);
-    let LocalFromWrite = db.write();
+    LocalReturnData = LocalArrayAfterUuid.length;
 
-    LocalReturnData.KTF = true;
+    return LocalReturnData;
+};
 
-    return LocalDataWithUuid.UuId;
+const LocalFuncForArray = ({ inDataToInsert }) => {
+    let LocalReturnData = inDataToInsert.map(element => {
+        let LocalReturnData = LocalFunc({ inDataToInsert: element });
+
+        return LocalReturnData
+    });
+
+    return LocalReturnData;
 };
 
 const LocalFunc = ({ inDataToInsert }) => {

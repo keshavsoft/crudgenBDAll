@@ -23,7 +23,7 @@ let StartFunc = ({ inTablesCollection, inTo, inFrom }) => {
             // LoopInsideFolderName = LoopInsideFolderName.replace(LoopSecond.name, LoopSecondpath.parse(LoopSecond.name).name);
 
             try {
-                fs.cpSync(`${LocalFrom}/kSampleFolder/ksSample`, `${LocalTo}/${LoopFirst.name}/${path.parse(LoopSecond.name).name}`, {
+                fs.cpSync(`${LocalFrom}/ksSample`, `${LocalTo}/${LoopFirst.name}/${path.parse(LoopSecond.name).name}`, {
                     recursive: true,
                 });
             } catch (error) {

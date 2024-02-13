@@ -7,29 +7,23 @@
             "name": "317",
             "children": [
                 {
-                    "path": "FromTableColumns\\317\\Transactions",
-                    "name": "kSampleFolder",
-                    "children": [
-                        {
-                            "path": "FromTableColumns\\317\\Transactions\\Orders.json",
-                            "name": "ksSample.json",
-                            "fileData": {
-                                "Name": {
-                                    "type": "STRING",
-                                    "allowNull": false,
-                                    "unique": true
-                                },
-                                "Mobile": {
-                                    "type": "STRING",
-                                    "allowNull": true
-                                },
-                                "City": {
-                                    "type": "STRING",
-                                    "allowNull": true
-                                }
-                            }
+                    "path": "FromTableColumns\\317\\Transactions\\Orders.json",
+                    "name": "ksSample.json",
+                    "fileData": {
+                        "Name": {
+                            "type": "STRING",
+                            "allowNull": false,
+                            "unique": true
+                        },
+                        "Mobile": {
+                            "type": "STRING",
+                            "allowNull": true
+                        },
+                        "City": {
+                            "type": "STRING",
+                            "allowNull": true
                         }
-                    ]
+                    }
                 }
             ]
         }

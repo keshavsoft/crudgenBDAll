@@ -2,8 +2,8 @@ import express from 'express';
 
 var router = express.Router();
 
-import { router as routerFromkSampleFolder } from './kSampleFolder/routes.js';
+import { router as routerFromksSample } from './ksSample/routes.js';
 
-router.use('/kSampleFolder', routerFromkSampleFolder);
+router.use('/ksSample', routerFromksSample);
 
 export { router };

@@ -1,6 +1,8 @@
 import { LowSync } from 'lowdb'
 import { JSONFileSync } from 'lowdb/node'
-import Configjson from '../../../../Config.json' assert { type: 'json' };
+import Configjson from '../../../Config.json' assert { type: 'json' };
+
+import { ColumnsPullFunc } from '../../DataColumns.js';
 import fileNameJson from '../fileName.json' assert { type: 'json' };
 
 let StartFunc = ({ LocalBodyAsModal }) => {
@@ -29,7 +31,10 @@ let StartFunc = ({ LocalBodyAsModal }) => {
 
 const LocalFuncForArray = ({ inDataToInsert }) => {
     let LocalReturnData = inDataToInsert.map(element => {
-        let LocalReturnData = LocalFunc({ inDataToInsert: element });
+        // let LocalReturnData = LocalFunc({ inDataToInsert: element });
+        let LocalFromModal = ColumnsPullFunc()(element);
+
+        let LocalReturnData = { ...LocalFromModal, UuId: uuidv4(), DateTime: Timestamp() };
 
         return LocalReturnData
     });

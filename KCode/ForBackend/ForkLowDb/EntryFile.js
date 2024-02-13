@@ -39,7 +39,6 @@ let LocalFuncForreadFile = ({ inFilesArray, inFolderName, inFrom, inTo, inTypeNa
         let LocalFileData = fs.readFileSync(LocalFilePath);
         let LocalfileNameJsonData = JSON.parse(LocalFileData);
         LocalfileNameJsonData.fileName = LoopFile.name;
-        LocalfileNameJsonData.folderName = inFolderName;
 
         fs.writeFileSync(LocalFilePath, JSON.stringify(LocalfileNameJsonData));
     });
