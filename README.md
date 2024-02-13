@@ -8,7 +8,7 @@
 - [Folder Structure](#folder-structure)
 - [Purpose of the Project](#purpose-of-the-project)
 - [Important Points](#important-points)
-- [advanced installation](./KeshavSoft.jpg)
+- [advanced installation](#advancedinstallation)
 
 ### <a name="overview"></a>## **Overview** 🔎
 This project focuses on automating CRUD operations for JSON files, making it easy to manage and manipulate data. It offers a user-friendly interface for performing essential actions on JSON files, such as creating, reading, updating, and deleting records.
@@ -110,3 +110,41 @@ ready with only flat json
 if want to run the repo without npm 
 
 BoilerPlate.bat -npm
+
+### <a name="advancedinstallation"></a>## **Advanced Installation** 🚀
+
+1. Create a folder and navigate into it using the command prompt.
+
+2. Clone the repository
+   ```
+   
+   git clone https://github.com/keshavsoft/crudgenBDAll
+   
+   ```
+3. Change Directory to crudGenByPath or Open the cloned folder, navigate to crudgenBDAll, and open the command prompt.
+   ```
+   
+    cd crudgenBDAll
+   
+   ```
+4. Run the batch file (For Windows)
+   ```
+   
+   BoilerPlate.bat
+   
+   ```
+   This Above Command runs the following in Windows
+   ``
+   npm i and node KCode/EntryFile.js
+   ``
+   
+    For Mac or Linux:
+      ``
+        chmod +x boilerplate.sh and sh boilerplate.sh
+     ``
+   
+ 5. For Executing:
+   
+   ```
+   
+      npm run start
