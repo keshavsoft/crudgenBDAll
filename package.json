@@ -1,0 +1,29 @@
+{
+  "name": "crudgenbdall",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\" color=\"#0000FF\">crudgenBDAll</h1>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavsoft/crudgenBDAll.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keshavsoft/crudgenBDAll/issues"
+  },
+  "homepage": "https://github.com/keshavsoft/crudgenBDAll#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "directory-tree": "^3.5.1",
+    "dotenv": "^16.4.3",
+    "express": "^4.18.2",
+    "fs-extra": "^11.2.0",
+    "lowdb": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
+    "ws": "^8.16.0"
+  }
+}

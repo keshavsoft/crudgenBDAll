@@ -1,0 +1,9 @@
+node_modules/
+
+bin/
+
+public/
+
+KData/
+
+.env
