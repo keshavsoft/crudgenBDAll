@@ -109,42 +109,22 @@ ready with only flat json
 
 if want to run the repo without npm 
 
-BoilerPlate.bat -npm
+BoilerPlate.bat -npm 
 
 ### <a name="advancedinstallation"></a>## **Advanced Installation** 🚀
 
-1. Create a folder and navigate into it using the command prompt.
+the below steps avoids, npm installation, there by saving internet bandwidth.
 
-2. Clone the repository
-   ```
-   
-   git clone https://github.com/keshavsoft/crudgenBDAll
-   
-   ```
-3. Change Directory to crudGenByPath or Open the cloned folder, navigate to crudgenBDAll, and open the command prompt.
-   ```
-   
-    cd crudgenBDAll
-   
-   ```
+Follow Installation steps 1, 2, 3 then 
+
 4. Run the batch file (For Windows)
    ```
    
-   BoilerPlate.bat
+   BoilerPlate.bat -npm
    
    ```
-   This Above Command runs the following in Windows
-   ``
-   npm i and node KCode/EntryFile.js
-   ``
-   
-    For Mac or Linux:
-      ``
-        chmod +x boilerplate.sh and sh boilerplate.sh
-     ``
    
  5. For Executing:
    
    ```
-   
       npm run start
