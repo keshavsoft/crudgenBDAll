@@ -3,8 +3,8 @@ import { JSONFileSync } from 'lowdb/node'
 import Configjson from '../../../Config.json' assert { type: 'json' };
 import tableNameJson from '../../tableName.json' assert { type: 'json' };
 
-let StartFunc = ({ inDataToInsert }) => {
-    let LocalinDataToInsert = inDataToInsert;
+let StartFunc = (inPostBody) => {
+    let LocalinDataToInsert = inPostBody;
     let LocalReturnData = { KTF: false, JSONFolderPath: "", CreatedLog: {} };
     let LocaltableName = tableNameJson.tableName;
 

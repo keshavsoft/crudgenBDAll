@@ -1,11 +1,15 @@
 import { StartFunc as StartFuncReadFileFromModal } from '../../kLowDb/ReadFileList/readFileFromModal.js';
-import { StartFunc as StartFuncwriteFile } from '../../kLowDb/WriteFileList/writeFile.js';
-import { StartFunc as StartFuncWriteFileFromModal } from '../../kLowDb/WriteFileList/writeFileFromModal.js';
-import { StartFunc as StartFuncImportToFile } from '../../kLowDb/WriteFileList/ImportToFile.js';
-import { StartFunc as StartFuncUploadToFile } from '../../kLowDb/WriteFileList/UploadToFile.js';
 
-let PostFunc = ({ inBodyKeys }) => {
-    return StartFuncwriteFile({ inDataToInsert: inBodyKeys });
+import { StartFunc as StartFuncwriteFile } from '../../kSequelize/WriteFileList/writeFile.js';
+
+// import { StartFunc as StartFuncwriteFile } from '../../kLowDb/WriteFileList/writeFile.js';
+
+// import { StartFunc as StartFuncWriteFileFromModal } from '../../kLowDb/WriteFileList/writeFileFromModal.js';
+// import { StartFunc as StartFuncImportToFile } from '../../kLowDb/WriteFileList/ImportToFile.js';
+// import { StartFunc as StartFuncUploadToFile } from '../../kLowDb/WriteFileList/UploadToFile.js';
+
+let PostFunc = (inPostBody) => {
+    return StartFuncwriteFile(inPostBody);
 };
 
 let PostFromModalFunc = ({ LocalBodyAsModal }) => {

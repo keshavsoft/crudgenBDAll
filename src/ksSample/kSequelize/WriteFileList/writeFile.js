@@ -1,8 +1,7 @@
-import { ColumnsPullFunc } from "../../DataColumns.js";
 import { StartFunc as StartFuncInitializeSequelizeWithTableName } from "../modals/initializeSequelizeWithTableName.js";
 
-let StartFunc = async ({ inDataToInsert }) => {
-  let localInDataToInsert = ColumnsPullFunc()(inDataToInsert);
+let StartFunc = async (inPostBody) => {
+  let localInDataToInsert = inPostBody;
 
   const LocalTableData = await StartFuncInitializeSequelizeWithTableName();
 
