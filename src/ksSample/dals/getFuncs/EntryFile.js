@@ -43,8 +43,12 @@ let GetBodyCheckFunc = () => {
     return StartFuncGetTableSchema();
 };
 
+let GetRowCountFunc = () => {
+    return StartFuncGetTableSchema();
+};
+
 export {
     GetFunc, GetDataOnlyFunc, GetFromModalFunc,
     GetFromModalUuidFunc, GetFromModalUuidAndTSFunc,
-    GetIdFunc,GetBodyCheckFunc
+    GetIdFunc, GetBodyCheckFunc, GetRowCountFunc
 };

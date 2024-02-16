@@ -8,6 +8,7 @@ import {
 
 import {
     GetDataOnlyFunc as GetDataOnlyFuncDalsForSequelize,
+    GetRowCountFunc as GetRowCountFuncDalsForSequelize
 } from '../../dalsForSequelize/getFuncs/EntryFile.js';
 
 import ConfigJson from '../../../Config.json' assert {type: 'json'};
@@ -45,6 +46,10 @@ let GetBodyCheckFunc = async () => {
 };
 
 let GetRowCountFunc = async () => {
+    if (ConfigJson.isSequelize) {
+        return GetRowCountFuncDalsForSequelize();
+    };
+
     return GetFuncDal();
 };
 
