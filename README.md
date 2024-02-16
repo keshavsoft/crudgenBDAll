@@ -128,3 +128,13 @@ Follow Installation steps 1, 2, 3 then
    
    ```
       npm run start
+   ```
+
+Purpose of this project
+
+at the root location KCode
+
+DataSchema define your schema
+
+CrudGenerator/Config.json is the configuration file
+
