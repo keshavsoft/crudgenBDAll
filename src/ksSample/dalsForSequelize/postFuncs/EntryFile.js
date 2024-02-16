@@ -1,6 +1,7 @@
 import { StartFunc as StartFuncReadFileFromModal } from '../../kLowDb/ReadFileList/readFileFromModal.js';
 
 import { StartFunc as StartFuncwriteFile } from '../../kSequelize/WriteFileList/writeFile.js';
+import { StartFunc as StartFuncImportToFile } from '../../kSequelize/WriteFileList/ImportToFile.js';
 
 // import { StartFunc as StartFuncwriteFile } from '../../kLowDb/WriteFileList/writeFile.js';
 
@@ -20,8 +21,8 @@ let PostUploadFunc = ({ LocalBodyAsModal }) => {
     return StartFuncImportToFile({ LocalBodyAsModal });
 };
 
-let PostUploadFromModalFunc = ({ LocalBodyAsModal }) => {
-    return StartFuncUploadToFile({ LocalBodyAsModal });
+let PostUploadFromModalFunc = async (inPostBody) => {
+    return await StartFuncImportToFile(inPostBody);
 };
 
 let PostGetSelectColumnsFunc = ({ LocalBodyAsModal }) => {

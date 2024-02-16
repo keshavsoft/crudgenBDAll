@@ -2,10 +2,10 @@ import { StartFunc as StartFuncInitializeSequelizeWithTableName } from '../modal
 
 import { StartFunc as StartFuncInitializeSequelize } from '../../../kSequelize/initializeSequelize.js';
 import tableNameJson from '../../tableName.json' assert { type: 'json' };
+import path from "path";
 
-
-let StartFunc = async ({ inDataToInsert }) => {
-    let LocalTableName = tableNameJson.tableName;
+let StartFunc = async (inPostBody) => {
+    let LocalTableName = path.parse(tableNameJson.tableName).name
 
     const LocalTableData = await StartFuncInitializeSequelizeWithTableName();
 
@@ -16,28 +16,18 @@ let StartFunc = async ({ inDataToInsert }) => {
     };
 
     try {
-
         const sequelize = await StartFuncInitializeSequelize();
 
         let LocalColumnsInfo = await sequelize.getQueryInterface().describeTable(LocalTableName);
 
         let LocalUniqueColumn = getKeyByValue(LocalColumnsInfo);
 
-        // let LocalTablesData = await LocalTableData.getQueryInterface().showAllSchemas();
-
-
-        let LocalUniqueColumnArray = inDataToInsert.map(element => {
+        let LocalUniqueColumnArray = inPostBody.map(element => {
             return element[LocalUniqueColumn];
         });
-        const users = await LocalTableData.findAll();
+
         let LocalWhereObject = {};
         LocalWhereObject[LocalUniqueColumn] = LocalUniqueColumnArray;
-
-        // const LocalFindId = await LocalTableData.findAll({
-        //     where: {
-        //         JobId: LocalUniqueColumnArray,
-        //     },
-        // });
 
         const LocalFoundRows = await LocalTableData.findAll({
             where: LocalWhereObject
@@ -56,13 +46,11 @@ let StartFunc = async ({ inDataToInsert }) => {
             };
         };
 
-
-        const LocalFromBuild = await LocalTableData.bulkCreate(inDataToInsert);
+        const LocalFromBuild = await LocalTableData.bulkCreate(inPostBody);
 
         return await LocalFromBuild;
     } catch (error) {
         return await { KTF: false, KReason: error, ErrorFrom: process.cwd() };
-        // return await error;
     };
 };
 
